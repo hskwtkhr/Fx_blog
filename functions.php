@@ -31,7 +31,7 @@ add_action('after_setup_theme', 'fx_blog_setup');
 // スタイルシートとスクリプトの読み込み
 function fx_blog_scripts()
 {
-    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.29');
+    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.30');
 
     // Chart.jsライブラリの読み込み
     wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js', array(), '4.4.0', true);

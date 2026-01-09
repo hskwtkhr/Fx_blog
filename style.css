@@ -740,14 +740,14 @@ img {
     .content-area {
         align-items: start;
     }
-    
+
     .sidebar {
         position: relative;
         overflow: visible !important;
         height: auto;
         align-self: start;
     }
-    
+
     /* 目次にsticky positioningを適用 - IDセレクタで直接指定 */
     #table-of-contents {
         position: -webkit-sticky !important;
@@ -761,7 +761,7 @@ img {
         transition: top 0.3s ease;
         will-change: position;
     }
-    
+
     /* クラスセレクタでも適用 */
     .sidebar #table-of-contents,
     .sidebar .toc-widget,
@@ -771,7 +771,7 @@ img {
         position: sticky !important;
         top: 20px !important;
     }
-    
+
     /* 親要素のoverflowを確実に無効化 */
     .site-main,
     .container,
@@ -1002,19 +1002,21 @@ img {
 
 /* Responsive */
 @media (max-width: 768px) {
-    html, body {
+
+    html,
+    body {
         overflow-x: hidden;
         max-width: 100vw;
         width: 100%;
     }
-    
+
     .container {
         padding: 0 15px;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
     }
-    
+
     .site-header {
         padding: 30px 0;
         width: 100%;
@@ -1080,7 +1082,7 @@ img {
         width: 100%;
         max-width: 100%;
     }
-    
+
     .site-main {
         width: 100%;
         max-width: 100vw;
@@ -1125,14 +1127,14 @@ img {
         word-wrap: break-word;
         overflow-wrap: break-word;
     }
-    
+
     /* 画像とテーブルがはみ出さないように */
     .post-content img {
         max-width: 100% !important;
         height: auto !important;
         width: auto !important;
     }
-    
+
     .post-content table {
         width: 100% !important;
         max-width: 100% !important;
@@ -1140,7 +1142,7 @@ img {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
-    
+
     .post-content table thead,
     .post-content table tbody,
     .post-content table tr {
@@ -1168,14 +1170,14 @@ img {
         padding-left: 15px;
         padding-right: 15px;
     }
-    
+
     /* モバイルでは人気の投稿を2列に */
     .sidebar-below .widget.highlight-popular .fx-recent-posts-grid {
         grid-template-columns: repeat(2, 1fr) !important;
         width: 100%;
         max-width: 100%;
     }
-    
+
     /* フッターをモバイル対応 */
     .footer-content {
         grid-template-columns: 1fr;
@@ -1183,11 +1185,11 @@ img {
         width: 100%;
         max-width: 100%;
     }
-    
+
     .footer-title {
         font-size: 16px;
     }
-    
+
     .site-footer {
         width: 100%;
         max-width: 100vw;
@@ -1195,7 +1197,7 @@ img {
         padding-left: 0;
         padding-right: 0;
     }
-    
+
     .site-footer .container {
         padding: 0 15px;
     }
@@ -1205,18 +1207,18 @@ img {
         background-color: #ffebee;
         /* Debug */
     }
-    
+
     /* モバイルでのステップ見出しの調整 */
     .post-content h2[id^="step"] {
         font-size: 20px !important;
         padding: 20px 15px 20px 100px !important;
         border-left: 90px solid #FFA500 !important;
     }
-    
+
     .post-content h2#step1 {
         border-left: 90px solid #FFA500 !important;
     }
-    
+
     .post-content h2#step1::before,
     .post-content h2#step2::before,
     .post-content h2#step3::before,
@@ -1301,7 +1303,7 @@ img {
     .fx-recent-posts-grid {
         grid-template-columns: repeat(4, 1fr) !important;
     }
-    
+
     /* sidebar-below内の人気の投稿も4列に */
     .sidebar-below .widget.highlight-popular .fx-recent-posts-grid {
         grid-template-columns: repeat(4, 1fr) !important;
@@ -1366,15 +1368,16 @@ img {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .point-card {
         padding: 20px;
     }
-    
+
     .point-number {
         font-size: 2.5em;
     }
 }
+
 /* Learning Box Styles (Added by Bot) */
 .learning-box {
     font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
@@ -1427,6 +1430,7 @@ img {
     background: linear-gradient(transparent 60%, #86efac 60%);
     font-weight: bold;
 }
+
 /* Stronger Overrides for Learning Box */
 .post-content .learning-box,
 .entry-content .learning-box,
@@ -1493,7 +1497,9 @@ img {
 .learning-box strong {
     background: linear-gradient(transparent 60%, #86efac 60%);
     font-weight: bold;
-}/* Fix Emoji Sizing (prevent huge icons on mobile) */
+}
+
+/* Fix Emoji Sizing (prevent huge icons on mobile) */
 .post-content img.emoji,
 .entry-content img.emoji,
 img.emoji {
@@ -1577,7 +1583,9 @@ img.emoji {
 .learning-box strong {
     background: linear-gradient(transparent 60%, #86efac 60%);
     font-weight: bold;
-}/* TOC Box Styles */
+}
+
+/* TOC Box Styles */
 .toc-box {
     border: 3px solid #fcd34d;
     /* Yellow/Gold border */
@@ -1617,7 +1625,9 @@ img.emoji {
 .toc-box a:hover {
     text-decoration: underline;
     color: #d97706;
-}/* Global Overflow Fix */
+}
+
+/* Global Overflow Fix */
 html,
 body {
     overflow-x: hidden !important;
@@ -1661,7 +1671,9 @@ table {
 html,
 body {
     max-width: 100% !important;
-}/* Mobile Layout Standardization */
+}
+
+/* Mobile Layout Standardization */
 @media (max-width: 768px) {
 
     /* Reset main container spacing */
@@ -1708,7 +1720,9 @@ body {
     .toc-box li {
         margin-left: 0 !important;
     }
-}/* FINAL MOBILE FIX v2 */
+}
+
+/* FINAL MOBILE FIX v2 */
 @media (max-width: 768px) {
 
     /* 1. Container Fix: Ensure it fits and has padding */
@@ -1783,7 +1797,9 @@ body {
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-}/* ===== V3 MOBILE FIX & HEADER STYLING ===== */
+}
+
+/* ===== V3 MOBILE FIX & HEADER STYLING ===== */
 
 /* 1. Header Layout Refinement */
 .header-content {
@@ -1960,7 +1976,9 @@ body {
         height: auto !important;
     }
 
-}/* ===== V4: EMERGENCY MOBILE FIX ===== */
+}
+
+/* ===== V4: EMERGENCY MOBILE FIX ===== */
 
 /* 1. Global Safety Reset */
 html,
@@ -2094,7 +2112,9 @@ body {
         max-width: 100% !important;
         height: auto !important;
     }
-}/* ===== V5: PC RESPONSIVE FIX & PADDING ADJUSTMENT ===== */
+}
+
+/* ===== V5: PC RESPONSIVE FIX & PADDING ADJUSTMENT ===== */
 
 /* 1. PC/Tablet Responsive Fix */
 /* When screen width is between 769px and 1200px (Tablet/Small PC), 
@@ -2180,7 +2200,9 @@ article {
         flex: none;
         margin-top: 30px;
     }
-}/* ===== V6: FLUID LAYOUT FIX ===== */
+}
+
+/* ===== V6: FLUID LAYOUT FIX ===== */
 
 /* 1. Remove Fixed Minimun Widths from Everything */
 /* This ensures nothing "stops shrinking" */
@@ -2276,7 +2298,9 @@ article {
     /* If there was extra padding here, remove/reduce it */
     padding-top: 10px !important;
     padding-bottom: 20px !important;
-}/* ===== V7: MOBILE PADDING REDUCTION & PC RESIZE FIX ===== */
+}
+
+/* ===== V7: MOBILE PADDING REDUCTION & PC RESIZE FIX ===== */
 
 /* 1. Mobile Padding Extreme Reduction (Requested) */
 @media screen and (max-width: 768px) {
@@ -2343,7 +2367,9 @@ article,
 div[style*="width"],
 section[style*="width"] {
     max-width: 100% !important;
-}/* ===== V8: ULTIMATE MOBILE SPACE & PC FLUIDITY ===== */
+}
+
+/* ===== V8: ULTIMATE MOBILE SPACE & PC FLUIDITY ===== */
 
 /* 1. Global Reset for "Stuck" Widths */
 /* Force ALL elements to allow shrinking to zero if needed */
@@ -2422,7 +2448,9 @@ div {
     width: 100% !important;
     max-width: 100% !important;
     display: block !important;
-}/* ===== V9: RESTORE PC SIDEBAR & AGGRESSIVE MOBILE PADDING ===== */
+}
+
+/* ===== V9: RESTORE PC SIDEBAR & AGGRESSIVE MOBILE PADDING ===== */
 
 /* 1. PC: Restore Side-by-Side Layout (Undo previous "block" force) */
 @media screen and (min-width: 901px) {
@@ -2505,7 +2533,9 @@ body {
 
 * {
     box-sizing: border-box;
-}/* ===== V10: FINAL LAYOUT RESET ===== */
+}
+
+/* ===== V10: FINAL LAYOUT RESET ===== */
 
 /* 1. PC SIDEBAR RESTORATION (Priority) */
 /* Override ANY previous display:block or width:100% on PC */
@@ -2576,7 +2606,9 @@ body {
         padding-left: 8px !important;
         padding-right: 8px !important;
     }
-}/* ===== V11: FINAL PC SIDEBAR & MOBILE STEP FIX ===== */
+}
+
+/* ===== V11: FINAL PC SIDEBAR & MOBILE STEP FIX ===== */
 
 /* 1. PC Sidebar Recovery (Definitive) */
 @media screen and (min-width: 1000px) {
@@ -2658,7 +2690,9 @@ body {
     .entry-content {
         margin-top: 5px !important;
     }
-}/* ===== V12: FINAL TARGETED FIX ===== */
+}
+
+/* ===== V12: FINAL TARGETED FIX ===== */
 
 /* 1. PC Sidebar Fix (Targeting correct container .content-area) */
 @media screen and (min-width: 1000px) {
@@ -2715,7 +2749,9 @@ body {
         content: none !important;
         display: none !important;
     }
-}/* ===== V13: SPECIFIC FIX FOR #steps HEADING ===== */
+}
+
+/* ===== V13: SPECIFIC FIX FOR #steps HEADING ===== */
 
 /* 
    Fix the "Summary Step Heading" which was accidentally caught 
@@ -2759,7 +2795,9 @@ body {
     .sidebar {
         display: block !important;
     }
-}/* ===== V14: PC WIDTH EXPANSION ===== */
+}
+
+/* ===== V14: PC WIDTH EXPANSION ===== */
 
 /* 1. PC Container Width Increase */
 @media screen and (min-width: 1000px) {
@@ -2810,7 +2848,9 @@ body {
         width: 300px !important;
         max-width: 300px !important;
     }
-}/* ===== V15: CENTER ALIGNMENT & PADDING FIX ===== */
+}
+
+/* ===== V15: CENTER ALIGNMENT & PADDING FIX ===== */
 
 /* 1. PC Layout: Center Align Article & Sidebar */
 /* Prevent "Spread apart" look caused by space-between */
@@ -2862,7 +2902,9 @@ article {
     margin: 0 !important;
     padding: 0 !important;
     width: 100% !important;
-}/* ===== V16: ROBUST CENTERING & RESPONSIVE FIX ===== */
+}
+
+/* ===== V16: ROBUST CENTERING & RESPONSIVE FIX ===== */
 
 /* 1. PC Layout: Safe Centering and Shrinking */
 @media screen and (min-width: 1000px) {
@@ -2920,7 +2962,9 @@ article {
 .site-content {
     overflow-x: visible !important;
     /* Or hidden if needed, but visible helps scroll */
-}/* ===== V17: FULL WIDTH EXPANSION (NO LIMITS) ===== */
+}
+
+/* ===== V17: FULL WIDTH EXPANSION (NO LIMITS) ===== */
 
 /* 1. PC: Global Container Expansion */
 @media screen and (min-width: 1000px) {
@@ -2981,20 +3025,20 @@ article {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 12px !important;
+    gap: 16px !important;
     width: 90% !important;
-    max-width: 500px !important;
+    max-width: 540px !important;
     margin: 0 auto !important;
     background: linear-gradient(to bottom, #4ade80, #22c55e) !important;
     color: #fff !important;
-    padding: 16px 16px !important;
+    padding: 18px 20px !important;
     border-radius: 12px !important;
     text-decoration: none !important;
     font-weight: bold !important;
-    font-size: 17px !important;
+    font-size: 19px !important;
     line-height: 1.3 !important;
-    box-shadow: 0 6px 0 #15803d, 0 10px 10px rgba(0,0,0,0.25) !important;
-    text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 6px 0 #15803d, 0 10px 10px rgba(0, 0, 0, 0.25) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
     transform: translateY(-2px) !important;
     transition: all 0.1s !important;
     border: 1px solid #22c55e !important;
@@ -3003,22 +3047,29 @@ article {
 
 .cta-button-v6:hover {
     transform: translateY(0) !important;
-    box-shadow: 0 4px 0 #15803d, 0 6px 8px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 4px 0 #15803d, 0 6px 8px rgba(0, 0, 0, 0.2) !important;
     color: #fff !important;
 }
 
-/* Logo Image - FIXED 42px */
+/* Logo Image - PC: 55px, Fixed display issues */
 .cta-button-v6 img {
-    width: 42px !important;
-    height: 42px !important;
-    min-width: 42px !important;
-    max-width: 42px !important;
+    width: 55px !important;
+    height: 55px !important;
+    min-width: 55px !important;
+    max-width: 55px !important;
+    min-height: 55px !important;
+    max-height: 55px !important;
     flex-shrink: 0 !important;
     object-fit: contain !important;
     border-radius: 0 !important;
     display: block !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
     margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Text Container */
@@ -3031,6 +3082,7 @@ article {
 
 .cta-button-v6 .cta-text .cta-main {
     display: inline-block !important;
+    font-size: 19px !important;
 }
 
 .cta-button-v6 .cta-text .cta-sub {
@@ -3048,21 +3100,35 @@ article {
 
 .cta-button-v6 .cta-arrow svg {
     opacity: 0.9 !important;
+    width: 24px !important;
+    height: 24px !important;
 }
 
-/* Mobile Responsive - Ensure logo stays 42px */
+/* Mobile Responsive - Keep logo at 42px */
 @media screen and (max-width: 768px) {
     .cta-button-v6 {
         width: 95% !important;
         padding: 14px 12px !important;
         font-size: 15px !important;
         gap: 10px !important;
+        max-width: 100% !important;
     }
-    
+
     .cta-button-v6 img {
         width: 42px !important;
         height: 42px !important;
         min-width: 42px !important;
         max-width: 42px !important;
+        min-height: 42px !important;
+        max-height: 42px !important;
+    }
+
+    .cta-button-v6 .cta-text .cta-main {
+        font-size: 15px !important;
+    }
+
+    .cta-button-v6 .cta-arrow svg {
+        width: 20px !important;
+        height: 20px !important;
     }
 }
