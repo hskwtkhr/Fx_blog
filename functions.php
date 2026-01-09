@@ -4,13 +4,14 @@
  */
 
 // テーマのセットアップ
-function fx_blog_setup() {
+function fx_blog_setup()
+{
     // タイトルタグのサポート
     add_theme_support('title-tag');
-    
+
     // アイキャッチ画像のサポート
     add_theme_support('post-thumbnails');
-    
+
     // HTML5マークアップのサポート
     add_theme_support('html5', array(
         'search-form',
@@ -19,7 +20,7 @@ function fx_blog_setup() {
         'gallery',
         'caption',
     ));
-    
+
     // ナビゲーションメニューの登録
     register_nav_menus(array(
         'primary' => 'プライマリーメニュー',
@@ -28,13 +29,14 @@ function fx_blog_setup() {
 add_action('after_setup_theme', 'fx_blog_setup');
 
 // スタイルシートとスクリプトの読み込み
-function fx_blog_scripts() {
-    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.28');
-    
+function fx_blog_scripts()
+{
+    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.29');
+
     // Chart.jsライブラリの読み込み
     wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js', array(), '4.4.0', true);
     wp_enqueue_script('search-toggle', get_template_directory_uri() . '/js/search-toggle.js', array(), '1.0.0', true);
-    
+
     // 投稿ページ、固定ページ、トップページで目次スクリプトを読み込み
     if (is_single() || is_page() || is_front_page() || is_home()) {
         wp_enqueue_script('fx-blog-toc', get_template_directory_uri() . '/js/toc.js', array(), '1.0.0', true);
@@ -43,7 +45,8 @@ function fx_blog_scripts() {
 add_action('wp_enqueue_scripts', 'fx_blog_scripts');
 
 // ウィジェットエリアの登録
-function fx_blog_widgets_init() {
+function fx_blog_widgets_init()
+{
     register_sidebar(array(
         'name' => 'サイドバー',
         'id' => 'sidebar-1',
@@ -57,19 +60,22 @@ function fx_blog_widgets_init() {
 add_action('widgets_init', 'fx_blog_widgets_init');
 
 // 投稿ページの抜粋文字数
-function fx_blog_excerpt_length($length) {
+function fx_blog_excerpt_length($length)
+{
     return 120;
 }
 add_filter('excerpt_length', 'fx_blog_excerpt_length');
 
 // 抜粋の最後の文字
-function fx_blog_excerpt_more($more) {
+function fx_blog_excerpt_more($more)
+{
     return '...';
 }
 add_filter('excerpt_more', 'fx_blog_excerpt_more');
 
 // デフォルトメニュー（メニューが設定されていない場合）
-function fx_blog_default_menu() {
+function fx_blog_default_menu()
+{
     echo '<ul class="nav-menu">';
     echo '<li><a href="' . esc_url(home_url('/')) . '">ホーム</a></li>';
     echo '<li><a href="' . esc_url(home_url('/#comparison')) . '">比較</a></li>';
@@ -79,14 +85,15 @@ function fx_blog_default_menu() {
 }
 
 // コメント機能を無効化
-function fx_blog_disable_comments() {
+function fx_blog_disable_comments()
+{
     // コメントを完全に無効化
     add_filter('comments_open', '__return_false', 20, 2);
     add_filter('pings_open', '__return_false', 20, 2);
-    
+
     // 既存のコメントを非表示
     add_filter('comments_array', '__return_empty_array', 10, 2);
-    
+
     // コメントフォームを削除
     add_filter('comment_form_default_fields', '__return_empty_array');
     add_filter('comment_form_defaults', '__return_empty_array');
@@ -94,32 +101,37 @@ function fx_blog_disable_comments() {
 add_action('admin_init', 'fx_blog_disable_comments');
 
 // 管理画面からコメント関連を非表示
-function fx_blog_remove_comments_menu() {
+function fx_blog_remove_comments_menu()
+{
     remove_menu_page('edit-comments.php');
     remove_submenu_page('options-discussion.php', 'options-discussion.php');
 }
 add_action('admin_menu', 'fx_blog_remove_comments_menu');
 
 // ダッシュボードからコメント関連ウィジェットを削除
-function fx_blog_remove_comment_dashboard_widget() {
+function fx_blog_remove_comment_dashboard_widget()
+{
     remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
 }
 add_action('admin_init', 'fx_blog_remove_comment_dashboard_widget');
 
 // サイドバーからコメント関連ウィジェットを削除
-function fx_blog_remove_comment_widgets() {
+function fx_blog_remove_comment_widgets()
+{
     unregister_widget('WP_Widget_Recent_Comments');
 }
 add_action('widgets_init', 'fx_blog_remove_comment_widgets');
 
 // 検索ウィジェットをサイドバーから削除（ただし管理画面には表示される）
-function fx_blog_remove_search_widget() {
+function fx_blog_remove_search_widget()
+{
     unregister_widget('WP_Widget_Search');
 }
 add_action('widgets_init', 'fx_blog_remove_search_widget', 11);
 
 // 「最近の投稿」ウィジェットのタイトルを「人気の投稿」に変更
-function fx_blog_change_recent_posts_widget_title($title, $instance = array(), $id_base = '') {
+function fx_blog_change_recent_posts_widget_title($title, $instance = array(), $id_base = '')
+{
     // ウィジェットタイトルが「最近の投稿」の場合、「人気の投稿」に変更
     if ($title == '最近の投稿') {
         return '人気の投稿';
@@ -129,7 +141,8 @@ function fx_blog_change_recent_posts_widget_title($title, $instance = array(), $
 add_filter('widget_title', 'fx_blog_change_recent_posts_widget_title', 10, 3);
 
 // ウィジェットインスタンスのタイトルも変更
-function fx_blog_change_widget_instance_title($instance, $widget) {
+function fx_blog_change_widget_instance_title($instance, $widget)
+{
     if ($widget instanceof WP_Widget_Recent_Posts) {
         if (isset($instance['title']) && $instance['title'] == '最近の投稿') {
             $instance['title'] = '人気の投稿';
@@ -140,32 +153,33 @@ function fx_blog_change_widget_instance_title($instance, $widget) {
 add_filter('widget_display_callback', 'fx_blog_change_widget_instance_title', 10, 2);
 
 // 記事下部に表示するウィジェット（検索とコメントを除外）
-function fx_blog_render_below_widgets() {
+function fx_blog_render_below_widgets()
+{
     if (!is_active_sidebar('sidebar-1')) {
         return;
     }
-    
+
     global $wp_registered_sidebars, $wp_registered_widgets;
-    
+
     $sidebars_widgets = wp_get_sidebars_widgets();
-    
+
     if (!isset($sidebars_widgets['sidebar-1'])) {
         return;
     }
-    
+
     $widget_ids = $sidebars_widgets['sidebar-1'];
-    
+
     foreach ($widget_ids as $widget_id) {
         // 検索ウィジェットとコメントウィジェットを除外
         if (strpos($widget_id, 'search') !== false || strpos($widget_id, 'recent-comments') !== false) {
             continue;
         }
-        
+
         // ウィジェットを表示
         if (isset($wp_registered_widgets[$widget_id])) {
             $callback = $wp_registered_widgets[$widget_id]['callback'];
             $params = $wp_registered_widgets[$widget_id]['params'];
-            
+
             // サイドバーの標準引数を注入
             if (isset($params[0]) && is_array($params[0])) {
                 $params[0]['before_widget'] = '<div id="%1$s" class="widget %2$s">';
@@ -173,7 +187,7 @@ function fx_blog_render_below_widgets() {
                 $params[0]['before_title'] = '<h3 class="widget-title">';
                 $params[0]['after_title'] = '</h3>';
             }
-            
+
             if (is_callable($callback)) {
                 call_user_func_array($callback, $params);
             }
@@ -182,8 +196,10 @@ function fx_blog_render_below_widgets() {
 }
 
 // 画像付き最近の投稿ウィジェット
-class FX_Blog_Recent_Posts_Widget extends WP_Widget {
-    function __construct() {
+class FX_Blog_Recent_Posts_Widget extends WP_Widget
+{
+    function __construct()
+    {
         parent::__construct(
             'fx_blog_recent_posts',
             '画像付き最近の投稿',
@@ -191,7 +207,8 @@ class FX_Blog_Recent_Posts_Widget extends WP_Widget {
         );
     }
 
-    public function widget($args, $instance) {
+    public function widget($args, $instance)
+    {
         $title = !empty($instance['title']) ? $instance['title'] : '人気の投稿';
         // FORCE 5 posts as per user request (override widget settings)
         $number = 5;
@@ -203,7 +220,7 @@ class FX_Blog_Recent_Posts_Widget extends WP_Widget {
         if (!empty($title)) {
             echo $args['before_title'] . apply_filters('widget_title', $title) . $args['after_title'];
         }
-        
+
         $r = new WP_Query(array(
             'posts_per_page' => $number,
             'no_found_rows' => true,
@@ -236,22 +253,27 @@ class FX_Blog_Recent_Posts_Widget extends WP_Widget {
         echo '</div>'; // End wrapper
     }
 
-    public function form($instance) {
+    public function form($instance)
+    {
         $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
         $number = isset($instance['number']) ? absint($instance['number']) : 5;
         ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>">タイトル:</label>
-            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+            <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>"
+                name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_id('number'); ?>">表示する投稿数:</label>
-            <input class="tiny-text" id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="number" step="1" min="1" value="<?php echo $number; ?>" size="3" />
+            <input class="tiny-text" id="<?php echo $this->get_field_id('number'); ?>"
+                name="<?php echo $this->get_field_name('number'); ?>" type="number" step="1" min="1"
+                value="<?php echo $number; ?>" size="3" />
         </p>
         <?php
     }
 
-    public function update($new_instance, $old_instance) {
+    public function update($new_instance, $old_instance)
+    {
         $instance = array();
         $instance['title'] = (!empty($new_instance['title'])) ? strip_tags($new_instance['title']) : '';
         $instance['number'] = (!empty($new_instance['number'])) ? absint($new_instance['number']) : '';
@@ -260,87 +282,92 @@ class FX_Blog_Recent_Posts_Widget extends WP_Widget {
 }
 
 // ウィジェットの登録
-function fx_blog_register_widgets() {
+function fx_blog_register_widgets()
+{
     register_widget('FX_Blog_Recent_Posts_Widget');
 }
 add_action('widgets_init', 'fx_blog_register_widgets');
 
 // FAQショートコード
-function fx_blog_faq_shortcode($atts, $content = null) {
+function fx_blog_faq_shortcode($atts, $content = null)
+{
     $atts = shortcode_atts(array(
         'question' => '',
     ), $atts);
-    
+
     if (empty($atts['question'])) {
         return '';
     }
-    
+
     $output = '<details class="faq-item">';
     $output .= '<summary class="faq-question">Q. ' . esc_html($atts['question']) . '</summary>';
     $output .= '<div class="faq-answer">' . wpautop(do_shortcode($content)) . '</div>';
     $output .= '</details>';
-    
+
     return $output;
 }
 add_shortcode('faq', 'fx_blog_faq_shortcode');
 
 // FAQセクション全体のラッパーショートコード
-function fx_blog_faq_section_shortcode($atts, $content = null) {
+function fx_blog_faq_section_shortcode($atts, $content = null)
+{
     $atts = shortcode_atts(array(
         'title' => 'よくある質問',
     ), $atts);
-    
+
     $output = '<section class="faq-section">';
     if (!empty($atts['title'])) {
         $output .= '<h2>' . esc_html($atts['title']) . '</h2>';
     }
     $output .= do_shortcode($content);
     $output .= '</section>';
-    
+
     return $output;
 }
 add_shortcode('faq_section', 'fx_blog_faq_section_shortcode');
 
 // ファビコンの設定
-function fx_blog_favicon() {
+function fx_blog_favicon()
+{
     $favicon_svg = get_template_directory_uri() . '/favicon.svg';
     $favicon_url = get_template_directory_uri() . '/favicon.ico';
     $favicon_png = get_template_directory_uri() . '/favicon.png';
     $apple_touch_icon = get_template_directory_uri() . '/apple-touch-icon.png';
-    
+
     // ファビコンが存在するか確認
     $favicon_svg_path = get_template_directory() . '/favicon.svg';
     $favicon_path = get_template_directory() . '/favicon.ico';
     $favicon_png_path = get_template_directory() . '/favicon.png';
     $apple_touch_icon_path = get_template_directory() . '/apple-touch-icon.png';
-    
+
     // SVG favicon (現代のブラウザ向け)
     if (file_exists($favicon_svg_path)) {
         echo '<link rel="icon" type="image/svg+xml" href="' . esc_url($favicon_svg) . '">' . "\n";
     }
-    
+
     // favicon.ico (古いブラウザ向け)
     if (file_exists($favicon_path)) {
         echo '<link rel="icon" type="image/x-icon" href="' . esc_url($favicon_url) . '">' . "\n";
     }
-    
+
     // favicon.png (32x32)
     if (file_exists($favicon_png_path)) {
         echo '<link rel="icon" type="image/png" sizes="32x32" href="' . esc_url($favicon_png) . '">' . "\n";
     }
-    
+
     // Apple Touch Icon (180x180)
     if (file_exists($apple_touch_icon_path)) {
         echo '<link rel="apple-touch-icon" sizes="180x180" href="' . esc_url($apple_touch_icon) . '">' . "\n";
     }
-    
+
     // デフォルトのWordPressファビコンを削除
     remove_action('wp_head', 'wp_site_icon', 99);
 }
 add_action('wp_head', 'fx_blog_favicon', 1);
 
 // 【緊急修正】レイアウト強制上書き用CSS注入
-function fx_blog_inject_critical_css() {
+function fx_blog_inject_critical_css()
+{
     echo '<style type="text/css">
         /* PC LAYOUT OVERRIDES (FORCE) */
         @media screen and (min-width: 1000px) {
