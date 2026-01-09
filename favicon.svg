@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- 背景（丸みを帯びた正方形） -->
+  <rect x="4" y="4" width="56" height="56" rx="12" fill="#FFD700"/>
+  
+  <!-- FXの文字（スタイリッシュに） -->
+  <text x="32" y="42" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1a1a1a" text-anchor="middle">FX</text>
+  
+  <!-- 上向きの矢印（逆転を示す） -->
+  <path d="M 32 20 L 24 28 L 32 24 L 40 28 Z" fill="#1a1a1a"/>
+</svg>
+

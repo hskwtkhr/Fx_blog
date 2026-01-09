@@ -1,0 +1,3068 @@
+/*
+Theme Name: FXブログ
+Theme URI: https://example.com
+Description: 海外FXブログ用のシンプルで読みやすいWordPressテーマ
+Author: Your Name
+Version: 1.0.3
+Text Domain: fx-blog
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.7;
+    color: #333;
+    background-color: #f5f5f5;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+/* Header */
+.site-header {
+    position: relative;
+    background-image: url('./images/titleback.jpg?v=2');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 50px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(51, 51, 51, 0.75) 0%, rgba(100, 100, 100, 0.65) 100%);
+    z-index: 0;
+}
+
+.header-background {
+    display: none;
+    /* 直接headerに背景を設定したため不要 */
+}
+
+.site-header .container {
+    position: relative;
+    z-index: 1;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.site-title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.site-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.site-title a {
+    color: #FFD700;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.site-title a:hover {
+    opacity: 0.9;
+    text-shadow: 2px 2px 6px rgba(255, 215, 0, 0.6);
+}
+
+.site-subtitle {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+/* Navigation */
+.main-navigation {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.nav-menu a:hover {
+    background-color: rgba(255, 215, 0, 0.3);
+    color: #FFD700;
+    transform: translateY(-2px);
+}
+
+.nav-menu .current-menu-item>a,
+.nav-menu .current_page_item>a {
+    background-color: rgba(255, 215, 0, 0.4);
+    color: #FFD700;
+    font-weight: bold;
+}
+
+/* Header Search */
+.header-search {
+    display: flex;
+    align-items: center;
+}
+
+.header-search form {
+    display: flex;
+    gap: 5px;
+}
+
+.header-search input[type="search"] {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    font-size: 14px;
+    min-width: 200px;
+}
+
+.header-search input[type="search"]:focus {
+    outline: none;
+    border-color: #FFD700;
+    background-color: #fff;
+}
+
+.header-search input[type="submit"] {
+    padding: 8px 16px;
+    background-color: #FFD700;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.header-search input[type="submit"]:hover {
+    background-color: #FFC700;
+}
+
+/* Main Content */
+.site-main {
+    padding: 20px 0 60px;
+    overflow: visible;
+}
+
+.content-area {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 40px;
+    align-items: start;
+    overflow: visible;
+    position: relative;
+}
+
+/* 記事下のサイドバー */
+.sidebar-below {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    max-width: 100%;
+}
+
+/* 人気の投稿ウィジェットを最初に配置 */
+.sidebar-below .widget.highlight-popular {
+    order: 1;
+    width: 100%;
+}
+
+/* 人気の投稿のタイトル */
+.sidebar-below .widget.highlight-popular .widget-title {
+    margin-bottom: 20px;
+}
+
+/* 人気の投稿のグリッド部分を4列に */
+.sidebar-below .widget.highlight-popular .fx-recent-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px;
+}
+
+/* カテゴリーウィジェットを最後に配置 */
+.sidebar-below .widget_categories,
+.sidebar-below .widget-category-below {
+    order: 2;
+    width: 100%;
+}
+
+/* その他のウィジェットは順番通り */
+.sidebar-below .widget:not(.highlight-popular):not(.widget_categories):not(.widget-category-below) {
+    order: 3;
+    width: 100%;
+}
+
+
+/* Post */
+.post {
+    margin-bottom: 50px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.post-header {
+    margin-bottom: 30px;
+}
+
+.post-title {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.post-meta {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.post-content {
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.post-content h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 40px 0 20px;
+    color: #333;
+    background-color: #FFD700;
+    padding: 15px 20px;
+    border-radius: 6px;
+}
+
+.post-content h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 70px 0 18px 0;
+    /* 上部のマージンを倍に */
+    color: #333;
+    background-color: #FFD700;
+    padding: 12px 20px;
+    border-radius: 6px;
+}
+
+/* ステップ見出しは上記のスタイルを上書き */
+.post-content h2[id^="step"] {
+    background-color: transparent !important;
+}
+
+/* ステップ1から5の特別なスタイル - WordPressブロックエディタ対応 */
+.post-content h2[id^="step"],
+.post-content h2.wp-block-heading[id^="step"] {
+    position: relative !important;
+    font-size: 28px !important;
+    font-weight: bold !important;
+    margin: 50px 0 30px 0 !important;
+    padding: 25px 30px 25px 140px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    border-left: 120px solid #FFA500 !important;
+    overflow: visible !important;
+}
+
+/* ステップ1もstep2と同じスタイル */
+.post-content h2#step1,
+.post-content h2.wp-block-heading#step1 {
+    background: linear-gradient(135deg, #FFE55C 0%, #FFD700 100%) !important;
+    color: #333 !important;
+    border-left: 120px solid #FFA500 !important;
+    font-size: 28px !important;
+}
+
+/* ステップ1の左側帯に「STEP 1」を横書き表示 */
+.post-content h2#step1::before,
+.post-content h2.wp-block-heading#step1::before {
+    content: "STEP 1" !important;
+    position: absolute !important;
+    left: -120px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+}
+
+/* ステップ2から5のスタイル */
+.post-content h2#step2,
+.post-content h2#step3,
+.post-content h2#step4,
+.post-content h2#step5,
+.post-content h2.wp-block-heading#step2,
+.post-content h2.wp-block-heading#step3,
+.post-content h2.wp-block-heading#step4,
+.post-content h2.wp-block-heading#step5 {
+    background: linear-gradient(135deg, #FFE55C 0%, #FFD700 100%) !important;
+    color: #333 !important;
+    border-left: 120px solid #FFA500 !important;
+}
+
+/* ステップ2から5の左側帯に「STEP 2」「STEP 3」などを横書き表示 */
+.post-content h2#step2::before,
+.post-content h2.wp-block-heading#step2::before {
+    content: "STEP 2" !important;
+    position: absolute !important;
+    left: -120px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+}
+
+.post-content h2#step3::before,
+.post-content h2.wp-block-heading#step3::before {
+    content: "STEP 3" !important;
+    position: absolute !important;
+    left: -120px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+}
+
+.post-content h2#step4::before,
+.post-content h2.wp-block-heading#step4::before {
+    content: "STEP 4" !important;
+    position: absolute !important;
+    left: -120px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+}
+
+.post-content h2#step5::before,
+.post-content h2.wp-block-heading#step5::before {
+    content: "STEP 5" !important;
+    position: absolute !important;
+    left: -120px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    width: 120px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 20px !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+}
+
+/* h2の直前のhrを非表示 */
+.post-content hr+h2 {
+    margin-top: 70px;
+}
+
+.post-content h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 30px 0 15px;
+    color: #333;
+    background-color: rgba(255, 215, 0, 0.3);
+    padding: 10px 18px;
+    border-radius: 4px;
+}
+
+.post-content h4 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 25px 0 12px;
+    color: #555;
+    background-color: rgba(255, 215, 0, 0.2);
+    padding: 8px 16px;
+    border-radius: 4px;
+}
+
+.post-content p {
+    margin-bottom: 1.5em;
+}
+
+.post-content ul,
+.post-content ol {
+    margin: 20px 0 20px 30px;
+    line-height: 1.8;
+}
+
+.post-content ul li,
+.post-content ol li {
+    margin-bottom: 10px;
+}
+
+.post-content a {
+    color: #666;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.post-content a:hover {
+    color: #FFD700;
+}
+
+.post-content strong {
+    font-weight: bold;
+    color: #333;
+    text-decoration: underline;
+    text-decoration-color: #FFD700;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+
+.post-content em {
+    font-style: italic;
+}
+
+.post-content hr {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 40px 0;
+}
+
+/* Comparison Table Details (折りたたみ) */
+.comparison-table-details {
+    margin: 20px 0;
+}
+
+.comparison-table-details summary {
+    cursor: pointer;
+    padding: 12px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-weight: bold;
+    color: #333;
+    margin: 20px 0;
+    transition: all 0.3s ease;
+    user-select: none;
+    list-style: none;
+}
+
+.comparison-table-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.comparison-table-details summary::before {
+    content: '▼ ';
+    display: inline-block;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.comparison-table-details[open] summary::before {
+    transform: rotate(180deg);
+}
+
+.comparison-table-details summary:hover {
+    background-color: #FFD700;
+    border-color: #FFD700;
+    color: #333;
+}
+
+.comparison-table-details[open] summary {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+}
+
+.comparison-table-details table {
+    margin-top: 0;
+    border-top: 1px solid #ddd;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* FAQ Items (折りたたみ) */
+.faq-item {
+    margin: 20px 0;
+}
+
+/* 質問部分（グレー背景、クリック可能） */
+.faq-item summary.faq-question,
+.faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold !important;
+    color: #333;
+    background-color: #e0e0e0 !important;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0;
+    user-select: none;
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.faq-item summary.faq-question::-webkit-details-marker,
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary.faq-question::before,
+.faq-item summary::before {
+    content: '▼ ';
+    display: inline-block;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+.faq-item[open] summary.faq-question::before,
+.faq-item[open] summary::before {
+    transform: rotate(180deg);
+}
+
+.faq-item summary.faq-question:hover,
+.faq-item summary:hover {
+    background-color: #d0d0d0 !important;
+}
+
+/* 回答部分 */
+.faq-item .faq-answer {
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-left: 3px solid #FFD700;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    margin-top: 0;
+    background-color: #fff;
+}
+
+.faq-item .faq-answer p {
+    margin-bottom: 1em;
+}
+
+.faq-item .faq-answer table {
+    margin: 15px 0;
+}
+
+/* h2の直前のhrは非表示 */
+.post-content hr:has(+ h2) {
+    display: none;
+}
+
+/* h2の直前のhrを非表示（:has()が対応していない場合の代替） */
+.post-content h2:first-of-type {
+    margin-top: 70px;
+}
+
+/* Tables */
+.post-content table {
+    width: 100%;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 15px;
+    box-sizing: border-box;
+    table-layout: auto;
+}
+
+.post-content table thead {
+    background-color: #666;
+    color: #fff;
+}
+
+.post-content table th {
+    padding: 12px 15px;
+    text-align: left;
+    font-weight: bold;
+    border: 1px solid #555;
+}
+
+.post-content table td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.post-content table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.post-content table tbody tr:hover {
+    background-color: #fffacd;
+}
+
+/* Table Logo Images */
+.post-content table td img {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.post-content table td:has(img) {
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+}
+
+/* Blockquote */
+.post-content blockquote {
+    border-left: 4px solid #FFD700;
+    padding: 15px 20px;
+    margin: 25px 0;
+    background-color: #fffacd;
+    font-style: italic;
+}
+
+/* Images */
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    margin: 25px 0;
+    border-radius: 4px;
+    width: auto;
+    box-sizing: border-box;
+}
+
+/* すべての画像がはみ出さないように */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Sidebar */
+.sidebar {
+    font-size: 14px;
+    position: relative;
+    align-self: start;
+    height: fit-content;
+    overflow: visible;
+}
+
+/* Table of Contents */
+.toc-widget {
+    background-color: #f5f5f5;
+    /* 薄いグレー */
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* PC版でsticky positioningを適用 - より確実に */
+@media screen and (min-width: 769px) {
+    .content-area {
+        align-items: start;
+    }
+    
+    .sidebar {
+        position: relative;
+        overflow: visible !important;
+        height: auto;
+        align-self: start;
+    }
+    
+    /* 目次にsticky positioningを適用 - IDセレクタで直接指定 */
+    #table-of-contents {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 20px !important;
+        max-height: calc(100vh - 40px) !important;
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        padding-bottom: 100px !important;
+        z-index: 10 !important;
+        transition: top 0.3s ease;
+        will-change: position;
+    }
+    
+    /* クラスセレクタでも適用 */
+    .sidebar #table-of-contents,
+    .sidebar .toc-widget,
+    aside.sidebar .toc-widget,
+    aside.sidebar #table-of-contents {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 20px !important;
+    }
+    
+    /* 親要素のoverflowを確実に無効化 */
+    .site-main,
+    .container,
+    .content-area,
+    .sidebar {
+        overflow: visible !important;
+    }
+}
+
+.toc-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 0 20px 0;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #FFD700;
+    color: #333;
+}
+
+.toc-nav {
+    font-size: 14px;
+}
+
+.toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc-item {
+    margin: 0;
+    padding: 0;
+}
+
+.toc-link {
+    display: block;
+    padding: 5px 0 5px 12px;
+    color: #555;
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all 0.3s ease;
+    line-height: 1.3;
+    /* 半分に縮小（1.6 → 1.3） */
+}
+
+.toc-link:hover {
+    border-left-color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+.toc-link.active {
+    font-weight: bold;
+    border-left-color: #FFD700;
+    background-color: rgba(255, 215, 0, 0.15);
+}
+
+/* h2は大きめ・黒色 */
+.toc-level-2 .toc-link {
+    font-weight: 600;
+    font-size: 15px;
+    color: #000;
+    /* 黒 */
+    padding: 6px 0 6px 12px;
+    /* 縦方向を縮小 */
+    line-height: 1.3;
+}
+
+/* h3は小さめでインデント・濃いグレー */
+.toc-level-3 .toc-link {
+    padding-left: 30px;
+    /* インデント */
+    padding-top: 3px;
+    /* 縦方向を縮小 */
+    padding-bottom: 3px;
+    /* 縦方向を縮小 */
+    font-size: 13px;
+    color: #555;
+    /* 濃いグレー */
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.toc-sublist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.widget {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.widget-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #FFD700;
+    color: #333;
+}
+
+.widget ul {
+    list-style: none;
+    margin: 0;
+}
+
+.widget ul li {
+    margin-bottom: 8px;
+    padding-left: 15px;
+    position: relative;
+}
+
+.widget ul li:before {
+    content: "▶";
+    position: absolute;
+    left: 0;
+    color: #666;
+    font-size: 10px;
+}
+
+.widget ul li a {
+    color: #555;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.widget ul li a:hover {
+    color: #FFD700;
+}
+
+/* 人気の投稿ウィジェットを目立たせる */
+.sidebar-below .widget.highlight-popular {
+    background-color: #fffacd;
+    border: 2px solid #FFD700;
+    box-shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+    order: -1;
+}
+
+.sidebar-below .widget.highlight-popular .widget-title {
+    font-size: 20px;
+    color: #333;
+    border-bottom: 3px solid #FFD700;
+    padding-bottom: 12px;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #2a2a2a;
+    border-top: 3px solid #FFD700;
+    padding: 50px 0 20px;
+    margin-top: 60px;
+    color: #ccc;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #444;
+}
+
+.footer-about .footer-description {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: #bbb;
+}
+
+.footer-about .footer-tagline {
+    font-size: 13px;
+    font-style: italic;
+    color: #999;
+    margin-top: 10px;
+}
+
+.footer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer-menu li {
+    margin-bottom: 10px;
+}
+
+.footer-menu a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    display: block;
+}
+
+.footer-menu a:hover {
+    color: #FFD700;
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    text-align: center;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 13px;
+    color: #999;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        max-width: 100vw;
+        width: 100%;
+    }
+    
+    .container {
+        padding: 0 15px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .site-header {
+        padding: 30px 0;
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .main-navigation {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 100%;
+        gap: 15px;
+    }
+
+    .header-search {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .header-search input[type="search"] {
+        min-width: 0;
+        flex: 1;
+        max-width: 100%;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .site-title {
+        font-size: 28px;
+        margin-bottom: 5px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .site-subtitle {
+        font-size: 12px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .nav-menu {
+        width: 100%;
+        max-width: 100%;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .nav-menu a {
+        padding: 12px 15px;
+        width: 100%;
+    }
+
+    .content-area {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .site-main {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .post {
+        padding: 15px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .post-title {
+        font-size: 24px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .post-content {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .post-content h1 {
+        font-size: 22px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .post-content h2 {
+        font-size: 20px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .post-content h3 {
+        font-size: 18px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+    
+    /* 画像とテーブルがはみ出さないように */
+    .post-content img {
+        max-width: 100% !important;
+        height: auto !important;
+        width: auto !important;
+    }
+    
+    .post-content table {
+        width: 100% !important;
+        max-width: 100% !important;
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .post-content table thead,
+    .post-content table tbody,
+    .post-content table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+    }
+
+    .toc-widget {
+        position: relative;
+        top: 0;
+        max-height: none;
+        margin-bottom: 30px;
+        padding-bottom: 100px;
+    }
+
+    .sidebar-below {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+        margin-left: -15px;
+        margin-right: -15px;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    
+    /* モバイルでは人気の投稿を2列に */
+    .sidebar-below .widget.highlight-popular .fx-recent-posts-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    /* フッターをモバイル対応 */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .footer-title {
+        font-size: 16px;
+    }
+    
+    .site-footer {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: hidden;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .site-footer .container {
+        padding: 0 15px;
+    }
+
+    .broker-detail {
+        grid-template-columns: 1fr !important;
+        background-color: #ffebee;
+        /* Debug */
+    }
+    
+    /* モバイルでのステップ見出しの調整 */
+    .post-content h2[id^="step"] {
+        font-size: 20px !important;
+        padding: 20px 15px 20px 100px !important;
+        border-left: 90px solid #FFA500 !important;
+    }
+    
+    .post-content h2#step1 {
+        border-left: 90px solid #FFA500 !important;
+    }
+    
+    .post-content h2#step1::before,
+    .post-content h2#step2::before,
+    .post-content h2#step3::before,
+    .post-content h2#step4::before,
+    .post-content h2#step5::before {
+        left: -90px;
+        width: 90px;
+        font-size: 16px;
+        letter-spacing: 2px;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        height: auto !important;
+    }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+/* 画像付き最近の投稿ウィジェット */
+.fx-recent-posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.fx-post-item {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+}
+
+.fx-post-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.fx-post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.fx-post-thumbnail {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+}
+
+.fx-post-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.fx-post-item:hover .fx-post-thumbnail img {
+    transform: scale(1.05);
+}
+
+.fx-post-title {
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* PC表示（768px以上）で横4列 */
+@media (min-width: 768px) {
+    .fx-recent-posts-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+    
+    /* sidebar-below内の人気の投稿も4列に */
+    .sidebar-below .widget.highlight-popular .fx-recent-posts-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+    }
+}
+
+/* 3つのポイントセクションのスタイル */
+.three-points-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin: 30px 0;
+    padding: 20px 0;
+}
+
+.point-card {
+    background-color: #fff;
+    border: 2px solid #FFD700;
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.point-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+}
+
+.point-number {
+    font-size: 3em;
+    font-weight: bold;
+    color: #FFD700;
+    margin-bottom: 15px;
+    line-height: 1;
+}
+
+.point-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin: 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #FFD700;
+}
+
+.point-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-top: 15px;
+}
+
+.point-content p {
+    margin: 0;
+}
+
+/* モバイル対応 */
+@media (max-width: 768px) {
+    .three-points-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .point-card {
+        padding: 20px;
+    }
+    
+    .point-number {
+        font-size: 2.5em;
+    }
+}
+/* Learning Box Styles (Added by Bot) */
+.learning-box {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: #f0fdf4;
+    border: 2px solid #22c55e;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 30px 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.learning-box h2 {
+    color: #15803d !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    font-size: 1.5em !important;
+    border-bottom: 2px dashed #86efac !important;
+    padding-bottom: 15px !important;
+    font-weight: bold !important;
+    background: none !important;
+    border-left: none !important;
+}
+
+.learning-box ul {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.learning-box li {
+    margin-bottom: 12px;
+    padding-left: 28px;
+    position: relative;
+    color: #166534;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.learning-box li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: #22c55e;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.learning-box strong {
+    background: linear-gradient(transparent 60%, #86efac 60%);
+    font-weight: bold;
+}
+/* Stronger Overrides for Learning Box */
+.post-content .learning-box,
+.entry-content .learning-box,
+.learning-box {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: #f0fdf4 !important;
+    border: 2px solid #22c55e !important;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 30px 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.post-content .learning-box h2,
+.entry-content .learning-box h2,
+.learning-box h2 {
+    color: #15803d !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    font-size: 1.5em !important;
+    border-bottom: 2px dashed #86efac !important;
+    padding-bottom: 15px !important;
+    font-weight: bold !important;
+    background: none !important;
+    background-color: transparent !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Ensure list style is removed */
+.post-content .learning-box ul,
+.entry-content .learning-box ul,
+.learning-box ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.post-content .learning-box li,
+.entry-content .learning-box li,
+.learning-box li {
+    list-style-type: none !important;
+    margin-bottom: 12px;
+    padding-left: 28px !important;
+    position: relative;
+    color: #166534;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.learning-box li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: #22c55e;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.learning-box strong {
+    background: linear-gradient(transparent 60%, #86efac 60%);
+    font-weight: bold;
+}/* Fix Emoji Sizing (prevent huge icons on mobile) */
+.post-content img.emoji,
+.entry-content img.emoji,
+img.emoji {
+    width: 1.25em !important;
+    height: 1.25em !important;
+    display: inline-block !important;
+    vertical-align: -0.25em !important;
+    box-shadow: none !important;
+    margin: 0 0.2em !important;
+    /* Reset the huge size overrides */
+    max-width: none !important;
+}
+
+/* Learning Box Styles (Preserved) */
+.post-content .learning-box,
+.entry-content .learning-box,
+.learning-box {
+    font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    background-color: #f0fdf4 !important;
+    border: 2px solid #22c55e !important;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 30px 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.post-content .learning-box h2,
+.entry-content .learning-box h2,
+.learning-box h2 {
+    color: #15803d !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    font-size: 1.5em !important;
+    border-bottom: 2px dashed #86efac !important;
+    padding-bottom: 15px !important;
+    font-weight: bold !important;
+    background: none !important;
+    background-color: transparent !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-top: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    /* Ensure icon inside h2 scales with text */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ensure list style is removed */
+.post-content .learning-box ul,
+.entry-content .learning-box ul,
+.learning-box ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+}
+
+.post-content .learning-box li,
+.entry-content .learning-box li,
+.learning-box li {
+    list-style-type: none !important;
+    margin-bottom: 12px;
+    padding-left: 28px !important;
+    position: relative;
+    color: #166534;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.learning-box li::before {
+    content: "✅";
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: #22c55e;
+    font-weight: bold;
+    font-size: 1em;
+}
+
+.learning-box strong {
+    background: linear-gradient(transparent 60%, #86efac 60%);
+    font-weight: bold;
+}/* TOC Box Styles */
+.toc-box {
+    border: 3px solid #fcd34d;
+    /* Yellow/Gold border */
+    border-radius: 12px;
+    padding: 24px;
+    margin: 30px 0;
+    background-color: #ffffff;
+    /* White bg (cleaner?) or light yellow #fffbeb */
+}
+
+.toc-box h2 {
+    margin-top: 0 !important;
+    border-bottom: 2px dashed #fcd34d !important;
+    padding-bottom: 15px !important;
+    margin-bottom: 20px !important;
+    text-align: center;
+    font-size: 1.4em !important;
+    background: none !important;
+    border-left: none !important;
+}
+
+.toc-box ul {
+    margin-bottom: 0 !important;
+    padding-left: 20px !important;
+}
+
+.toc-box li {
+    margin-bottom: 8px !important;
+}
+
+.toc-box a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.toc-box a:hover {
+    text-decoration: underline;
+    color: #d97706;
+}/* Global Overflow Fix */
+html,
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative;
+}
+
+/* Ensure no element exceeds viewport width */
+* {
+    max-width: 100vw !important;
+    box-sizing: border-box;
+}
+
+/* Fix specific potentially overflowing elements */
+img,
+video,
+iframe,
+canvas,
+svg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+/* Fix pre/code blocks */
+pre,
+code {
+    white-space: pre-wrap !important;
+    word-break: break-all !important;
+    overflow-x: auto !important;
+}
+
+/* Fix table overflow */
+table {
+    display: block;
+    width: 100% !important;
+    overflow-x: auto;
+}
+
+/* Restore max-width: none for html/body to prevent loops if needed, but usually redundant */
+html,
+body {
+    max-width: 100% !important;
+}/* Mobile Layout Standardization */
+@media (max-width: 768px) {
+
+    /* Reset main container spacing */
+    .site-main .container,
+    .content-area,
+    .site-content {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Post content wrapper spacing */
+    .post,
+    article {
+        padding: 20px 15px !important;
+        /* Equal left/right padding inside the white box */
+        margin: 0 0 20px 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Fix internal boxes to match parent width perfectly */
+    .learning-box,
+    .toc-box,
+    div[style*="border"] {
+        /* Catch inline styled boxes if any remain */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Ensure lists inside boxes align correctly */
+    .learning-box ul,
+    .toc-box ul {
+        padding-left: 0 !important;
+    }
+
+    .learning-box li,
+    .toc-box li {
+        margin-left: 0 !important;
+    }
+}/* FINAL MOBILE FIX v2 */
+@media (max-width: 768px) {
+
+    /* 1. Container Fix: Ensure it fits and has padding */
+    .container,
+    .site-main,
+    .content-area,
+    .site-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 16px !important;
+        /* Material Design standard margin */
+        padding-right: 16px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 2. Article/Post Fix: Remove extra margins/paddings that might shift it */
+    .post,
+    article,
+    .post-content,
+    .entry-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        /* Parent container has padding */
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+        overflow-x: hidden !important;
+        /* Prevent internal push */
+    }
+
+    /* 3. Text Wrapping: Prevent long text from pushing width */
+    html,
+    body,
+    p,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    a,
+    span,
+    div {
+        overflow-wrap: anywhere !important;
+        /* Modern break strategy */
+        word-wrap: break-word !important;
+        white-space: normal !important;
+    }
+
+    /* 4. Fix specific boxes (Learning Box, TOC) */
+    .learning-box,
+    .toc-box {
+        width: 100% !important;
+        margin: 20px 0 !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+        max-width: 100% !important;
+        overflow: visible !important;
+        /* Allow shadow */
+    }
+
+    /* 5. Fix Gutenberg alignment blocks */
+    .alignfull,
+    .alignwide {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}/* ===== V3 MOBILE FIX & HEADER STYLING ===== */
+
+/* 1. Header Layout Refinement */
+.header-content {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping */
+    align-items: center;
+    /* Vertically center */
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.site-title-wrapper {
+    flex: 1 1 auto;
+    /* Take available space but wrap if needed */
+    min-width: 250px;
+}
+
+/* Navigation Horizontal Layout */
+.main-navigation {
+    display: flex !important;
+    align-items: center;
+    gap: 15px;
+    flex: 0 1 auto;
+}
+
+.nav-links-wrapper ul.nav-menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links-wrapper li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Search Toggle Button */
+.search-toggle-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    /* Icon color */
+    font-size: 20px;
+    cursor: pointer;
+    padding: 8px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.header-search-container {
+    position: relative;
+    margin-left: 10px;
+}
+
+/* Hidden Search Form */
+.header-search-form-wrapper {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 280px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+    margin-top: 10px;
+}
+
+.header-search-form-wrapper.active {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Mobile Specific Fixes for Header & Content */
+
+@media (max-width: 768px) {
+
+    /* Header Adjustments */
+    .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+        /* Align left */
+    }
+
+    .site-title-wrapper {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .site-subtitle {
+        font-size: 12px;
+    }
+
+    /* Horizontal Menu on Mobile? User asked for "横に並べて" */
+    /* Let's try to keep them horizontal but scrollable if too many, or wrap nicely */
+    .main-navigation {
+        width: 100%;
+        justify-content: space-between;
+        /* Links left, search right */
+    }
+
+    .nav-links-wrapper {
+        flex: 1;
+        overflow-x: auto;
+        /* Scroll if too wide */
+        padding-bottom: 5px;
+        /* Space for scrollbar */
+    }
+
+    .nav-links-wrapper ul.nav-menu {
+        gap: 15px;
+        flex-wrap: nowrap;
+        /* Keep single line */
+    }
+
+    .nav-links-wrapper li a {
+        font-size: 14px;
+    }
+
+    /* 3. CONTENT PADDING RESTORATION */
+    /* Revert margin 0 on container, use standard padding */
+    .site-main .container,
+    .content-area,
+    .site-content {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        /* Re-enable margins if they were cleared */
+        /* Actually, padding on container is enough to create space from edges */
+    }
+
+    /* Ensure white box has breathing room inside */
+    .post,
+    article {
+        padding: 20px !important;
+        margin-top: 20px !important;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        /* Subtle shadow for card effect */
+    }
+
+    /* 4. Fix Content Cut-off (Right side) */
+    /* Force 100% width on everything that might overflow */
+    .post-content,
+    .entry-content {
+        width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    img,
+    video,
+    iframe {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+}/* ===== V4: EMERGENCY MOBILE FIX ===== */
+
+/* 1. Global Safety Reset */
+html,
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    /* Changed from 100vw to avoid scrollbar conflict */
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* 2. Header Layout Force Horizontal */
+@media screen and (max-width: 768px) {
+
+    /* Header Container */
+    .site-header .container {
+        width: 100% !important;
+        padding: 0 10px !important;
+    }
+
+    .header-content {
+        display: flex !important;
+        flex-direction: column !important;
+        /* Title Top, Nav Bottom */
+        align-items: center !important;
+        gap: 15px !important;
+    }
+
+    /* Navigation Container */
+    .main-navigation {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        /* Force Horizontal */
+        justify-content: center !important;
+        /* Center align */
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        /* Wrap allowed if many items */
+        gap: 15px !important;
+    }
+
+    /* The actual list of links */
+    .nav-links-wrapper,
+    .nav-menu,
+    ul.nav-menu {
+        display: flex !important;
+        flex-direction: row !important;
+        /* Force items horizontal */
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        list-style: none !important;
+        width: auto !important;
+    }
+
+    .nav-menu li {
+        display: inline-block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
+
+    .nav-menu li a {
+        display: inline-block !important;
+        padding: 5px !important;
+        font-size: 14px !important;
+        white-space: nowrap !important;
+    }
+
+    /* Search Toggle Position */
+    .header-search-container {
+        margin-left: 0 !important;
+        padding-left: 10px !important;
+        border-left: 1px solid rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* 3. Content Cut-off Fix (Right Side) */
+@media screen and (max-width: 768px) {
+
+    /* Safe container padding */
+    .site-main .container {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Article Box */
+    .post,
+    article {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 20px 15px !important;
+        margin: 0 0 20px 0 !important;
+        box-sizing: border-box !important;
+        /* Ensure no internal element pushes width */
+        overflow: hidden !important;
+    }
+
+    /* Texts and Headings */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    li,
+    span,
+    a {
+        word-break: break-all !important;
+        /* Force break for long URLs/English */
+        overflow-wrap: break-word !important;
+        /* Break words if needed */
+        white-space: normal !important;
+        /* Ensure wrapping */
+        max-width: 100% !important;
+    }
+
+    /* Images/Media */
+    img,
+    video,
+    iframe,
+    canvas {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+}/* ===== V5: PC RESPONSIVE FIX & PADDING ADJUSTMENT ===== */
+
+/* 1. PC/Tablet Responsive Fix */
+/* When screen width is between 769px and 1200px (Tablet/Small PC), 
+   ensure container shrinks properly instead of staying fixed width. */
+@media screen and (min-width: 769px) {
+    .container {
+        width: 100% !important;
+        max-width: 1200px !important;
+        /* Cap max width */
+        padding-left: 20px !important;
+        /* Ensure minimal padding on sides */
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .site-main {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .content-area {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* 2. Narrower Padding for Content Box */
+/* "左と、上のpaddingはもっと狭く" requested */
+.post,
+article {
+    /* Previously 30px or 40px */
+    padding-top: 20px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 30px !important;
+}
+
+/* Mobile: even smaller padding */
+@media screen and (max-width: 768px) {
+
+    .post,
+    article {
+        padding-top: 15px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+/* 3. Fix Layout "Clogging" on Resize */
+/* Ensure flex containers wrap or shrink */
+.site-content {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow wrapping if sidebar exists */
+    width: 100% !important;
+    max-width: 100% !important;
+    justify-content: center;
+}
+
+.content-area {
+    flex: 1 1 auto;
+    /* Grow and shrink */
+    min-width: 0;
+    /* Allow shrinking below content size (CRITICAL for flex children) */
+    width: 100%;
+}
+
+/* Sidebar behavior */
+.widget-area {
+    flex: 0 0 300px;
+    max-width: 300px;
+}
+
+/* If screen is too small for sidebar side-by-side, wrap it */
+@media screen and (max-width: 1000px) {
+    .site-content {
+        flex-direction: column;
+    }
+
+    .widget-area {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+        margin-top: 30px;
+    }
+}/* ===== V6: FLUID LAYOUT FIX ===== */
+
+/* 1. Remove Fixed Minimun Widths from Everything */
+/* This ensures nothing "stops shrinking" */
+html,
+body,
+.site,
+.site-header,
+.site-content,
+.site-footer,
+.container,
+.site-main,
+.content-area,
+.sidebar,
+.post,
+article,
+.entry-content,
+.widget-area {
+    min-width: 0 !important;
+}
+
+/* 2. Narrower Padding (Requested) */
+/* Reduce padding around the main container */
+.container {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+/* Reduce padding inside the white article box */
+.post,
+article {
+    /* Top/Bottom reduced from 20-30px to 15px */
+    /* Left/Right reduced from 20px to 15px (PC) and 10px (Mobile) */
+    padding: 15px !important;
+    margin: 0 0 20px 0 !important;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .post,
+    article {
+        padding: 10px !important;
+        /* Even narrower for mobile */
+    }
+}
+
+/* 3. Ensure Flex Containers Shrink Properly */
+/* The main content area must shrink if window gets smaller */
+.site-content {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.content-area {
+    flex: 999 1 auto;
+    /* High grow factor, Shrink allowed */
+    width: auto !important;
+    /* Let flex control width */
+    max-width: 100% !important;
+    min-width: 0 !important;
+    /* Allow shrinking to 0 if needed (prevents overflow) */
+}
+
+.sidebar,
+.widget-area {
+    flex: 1 1 300px;
+    /* Base width 300px, but allow shrinking/growing */
+    max-width: 300px;
+    min-width: 0 !important;
+}
+
+/* If sidebar gets too squeezed (e.g. tablet), wrap it */
+@media screen and (max-width: 900px) {
+    .site-content {
+        flex-direction: column;
+    }
+
+    .sidebar,
+    .widget-area {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: none;
+    }
+}
+
+/* 4. Background Padding (Gap between edge and white box) */
+.site-main .container {
+    /* If there was extra padding here, remove/reduce it */
+    padding-top: 10px !important;
+    padding-bottom: 20px !important;
+}/* ===== V7: MOBILE PADDING REDUCTION & PC RESIZE FIX ===== */
+
+/* 1. Mobile Padding Extreme Reduction (Requested) */
+@media screen and (max-width: 768px) {
+
+    /* Outer Container: Gap between screen edge and white box */
+    .site-main .container,
+    .container {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+    }
+
+    /* Inner White Box: Content padding */
+    /* "コンテンツ背景のプレートのpaddingを減らして" */
+    .post,
+    article {
+        padding-top: 15px !important;
+        padding-bottom: 20px !important;
+        padding-left: 8px !important;
+        /* Very narrow */
+        padding-right: 8px !important;
+    }
+}
+
+/* 2. PC Resize/Cut-off Fix (Force Shrink) */
+/* Apply max-width constraint to ALL block-level containers */
+.site,
+.site-header,
+.site-content,
+.site-footer,
+.site-main,
+.content-area,
+.widget-area,
+.container,
+.post,
+article,
+.entry-content {
+    max-width: 100vw !important;
+    /* Never exceed viewport width */
+    width: 100% !important;
+    /* Fit parent */
+    box-sizing: border-box !important;
+}
+
+/* Fix Flexbox Locking */
+/* Sometimes flex items refuse to shrink below their content size. */
+.site-content,
+.content-area,
+.sidebar {
+    min-width: 0 !important;
+    /* Allow shrinking below content size */
+    flex-shrink: 1 !important;
+    /* Force shrinking */
+}
+
+/* Specifically for the Content Area to ensure it acts fluidly */
+.content-area {
+    width: auto !important;
+    /* Let Flexbox control it */
+    flex-basis: auto !important;
+}
+
+/* 3. Helper to debug override */
+/* Ensure no fixed width remains */
+div[style*="width"],
+section[style*="width"] {
+    max-width: 100% !important;
+}/* ===== V8: ULTIMATE MOBILE SPACE & PC FLUIDITY ===== */
+
+/* 1. Global Reset for "Stuck" Widths */
+/* Force ALL elements to allow shrinking to zero if needed */
+* {
+    min-width: 0 !important;
+}
+
+/* 2. Mobile Specific: Minimize Margins/Padding */
+@media screen and (max-width: 768px) {
+
+    /* Remove gap between screen edge and white box */
+    .site-main .container,
+    .container {
+        padding-left: 4px !important;
+        /* Almost edge-to-edge */
+        padding-right: 4px !important;
+    }
+
+    /* Minimize padding INSIDE the white box */
+    .post,
+    article {
+        padding-top: 15px !important;
+        padding-bottom: 20px !important;
+        padding-left: 10px !important;
+        /* Minimal readable padding */
+        padding-right: 10px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Ensure no margins on headers/paragraphs interfere */
+    .post-content h1,
+    .post-content h2,
+    .post-content p {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* 3. PC "Stops Shrinking" Fix */
+/* Often caused by headers or long content effectively implementing a min-width */
+html,
+body {
+    width: 100% !important;
+    overflow-x: hidden !important;
+}
+
+.site-header {
+    width: 100% !important;
+    max-width: 100vw !important;
+}
+
+/* Force text breaking globally to prevent long strings holding width */
+p,
+h1,
+h2,
+h3,
+a,
+span,
+li,
+div {
+    overflow-wrap: break-word !important;
+    word-wrap: break-word !important;
+}
+
+/* If the user means the 'site-header' background image is fixed width? Unlikely. */
+/* It's likely the Flexbox container */
+.site-content {
+    display: block !important;
+    /* Revert to block to test if flex is the cause */
+}
+
+.content-area,
+.sidebar {
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+}/* ===== V9: RESTORE PC SIDEBAR & AGGRESSIVE MOBILE PADDING ===== */
+
+/* 1. PC: Restore Side-by-Side Layout (Undo previous "block" force) */
+@media screen and (min-width: 901px) {
+    .site-content {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        /* Keep side-by-side */
+        justify-content: center !important;
+        gap: 20px !important;
+    }
+
+    .content-area {
+        width: auto !important;
+        /* Let flex handle width */
+        flex: 1 1 auto !important;
+        /* Grow/Shrink */
+        min-width: 0 !important;
+        /* Allow shrinking */
+        max-width: calc(100% - 320px) !important;
+        /* Leave room for sidebar */
+    }
+
+    .sidebar,
+    .widget-area {
+        display: block !important;
+        width: 300px !important;
+        flex: 0 0 300px !important;
+        /* Fixed width sidebar */
+        min-width: 300px !important;
+        margin-top: 0 !important;
+    }
+}
+
+/* 2. Mobile: EXTREME Padding Reduction (Requested) */
+@media screen and (max-width: 768px) {
+
+    /* Kill Container Padding */
+    .site-main .container,
+    .container {
+        padding-left: 0 !important;
+        /* Edge to edge */
+        padding-right: 0 !important;
+    }
+
+    /* White Box Settings */
+    /* User said "background padding is still wide" */
+    .post,
+    article {
+        margin: 0 5px 20px 5px !important;
+        /* 5px gap from screen edge */
+        width: auto !important;
+        /* Fill available space */
+        padding: 10px 8px !important;
+        /* Internal padding: 8px left/right */
+        border-radius: 8px;
+        /* Optional aesthetics */
+    }
+
+    /* Ensure content inside doesn't have extra margin */
+    .entry-content,
+    .post-content {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Sidebar goes to bottom/hidden on mobile if needed */
+    .sidebar,
+    .widget-area {
+        width: 100% !important;
+        flex: none !important;
+    }
+}
+
+/* 3. Global Safety (Keep this) */
+html,
+body {
+    overflow-x: hidden;
+}
+
+* {
+    box-sizing: border-box;
+}/* ===== V10: FINAL LAYOUT RESET ===== */
+
+/* 1. PC SIDEBAR RESTORATION (Priority) */
+/* Override ANY previous display:block or width:100% on PC */
+@media screen and (min-width: 1000px) {
+    .site-content {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+
+    .content-area {
+        width: auto !important;
+        flex: 1 1 auto !important;
+        /* Grow to fill space */
+        max-width: calc(100% - 340px) !important;
+        /* Force space for sidebar */
+    }
+
+    .sidebar,
+    .widget-area {
+        display: block !important;
+        width: 300px !important;
+        min-width: 300px !important;
+        flex: 0 0 300px !important;
+        margin-left: 20px !important;
+        margin-top: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        position: static !important;
+    }
+}
+
+/* 2. MOBILE PADDING (Priority) */
+@media screen and (max-width: 768px) {
+
+    /* Force margins/paddings to near zero on all wrappers */
+    .site-main,
+    .site-content,
+    .content-area,
+    .container {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+    }
+
+    /* The white card box */
+    .post,
+    article {
+        /* 1.5vw is extremely small relative padding */
+        margin: 0 5px 20px 5px !important;
+        /* Outer gap (grey bg visible) */
+        padding: 15px 10px !important;
+        /* Inner gap (text to border) */
+        width: calc(100% - 10px) !important;
+        /* Width calculation */
+        box-sizing: border-box !important;
+    }
+
+    /* Ensure no other element overrides this */
+    body .post,
+    body article {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}/* ===== V11: FINAL PC SIDEBAR & MOBILE STEP FIX ===== */
+
+/* 1. PC Sidebar Recovery (Definitive) */
+@media screen and (min-width: 1000px) {
+
+    /* Unset Grid first if it exists */
+    .content-area {
+        display: block !important;
+        /* Reset inherited Grid */
+    }
+
+    /* Flex Container */
+    .site-content {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
+        gap: 30px !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding: 0 20px !important;
+    }
+
+    /* Main Content */
+    .content-area {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        max-width: calc(100% - 330px) !important;
+        /* Ensure space for 300px sidebar + gap */
+        min-width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Sidebar */
+    .sidebar,
+    .widget-area {
+        display: block !important;
+        width: 300px !important;
+        min-width: 300px !important;
+        flex: 0 0 300px !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* 2. Mobile Step Heading Fix (Requested: drastically reduce orange width) */
+@media screen and (max-width: 768px) {
+    .post-content h2[id^="step"] {
+        /* Reduce Left Border (Orange) */
+        border-left: 10px solid #FFA500 !important;
+        /* Reduce Padding */
+        padding: 15px 10px 15px 20px !important;
+        /* Adjust Font */
+        font-size: 18px !important;
+        /* Ensure text fits */
+        width: 100% !important;
+    }
+
+    /* Hide the "STEP X" text inside the orange border because it won't fit anymore */
+    .post-content h2[id^="step"]::before,
+    .post-content h2[id^="step"]::after {
+        content: "" !important;
+        /* Remove text */
+        display: none !important;
+    }
+}
+
+/* 3. Mobile Top Padding Reduction */
+@media screen and (max-width: 768px) {
+
+    .post,
+    article {
+        padding-top: 5px !important;
+        /* Minimal top padding */
+    }
+
+    .entry-content {
+        margin-top: 5px !important;
+    }
+}/* ===== V12: FINAL TARGETED FIX ===== */
+
+/* 1. PC Sidebar Fix (Targeting correct container .content-area) */
+@media screen and (min-width: 1000px) {
+
+    /* The real wrapper in single.php is .content-area */
+    .content-area {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        gap: 40px !important;
+        /* Space between article and sidebar */
+        width: 100% !important;
+    }
+
+    /* Left side: Article */
+    .main-content {
+        flex: 1 1 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: calc(100% - 340px) !important;
+        /* Total width - sidebar - gap */
+    }
+
+    /* Right side: Sidebar */
+    .sidebar {
+        display: block !important;
+        flex: 0 0 300px !important;
+        width: 300px !important;
+        min-width: 300px !important;
+        margin-top: 0 !important;
+    }
+}
+
+/* 2. Mobile Step Heading Fix (Refined Selector) */
+@media screen and (max-width: 768px) {
+    /* Target ALL step-related IDs including #steps and #step1 */
+    /* User wants to reduce orange width for "口座開設の手順" (id="steps") as well */
+
+    .post-content h2[id^="step"] {
+        /* Reset the huge border */
+        border-left: 10px solid #FFA500 !important;
+        /* Reset padding */
+        padding: 15px 10px 15px 15px !important;
+        /* Reset gradient if needed, or keep it */
+        /* font adjustment */
+        font-size: 18px !important;
+        width: 100% !important;
+    }
+
+    /* Hide pseudo-elements (the giant vertical text) */
+    .post-content h2[id^="step"]::before,
+    .post-content h2[id^="step"]::after {
+        content: none !important;
+        display: none !important;
+    }
+}/* ===== V13: SPECIFIC FIX FOR #steps HEADING ===== */
+
+/* 
+   Fix the "Summary Step Heading" which was accidentally caught 
+   by the generic id^="step" selector.
+   Wrapper ID: #steps
+*/
+
+.post-content h2#steps,
+.post-content h2.wp-block-heading#steps {
+    /* Reset borders to normal Heading 2 style or simple orange bar */
+    border-left: 5px solid #FFA500 !important;
+    background: transparent !important;
+    /* Remove gradient if unwanted */
+    /* Reset huge padding caused by "STEP X" placeholder space */
+    padding: 10px 15px !important;
+    margin: 30px 0 20px 0 !important;
+    color: #333 !important;
+    font-size: 24px !important;
+    /* Standard H2 size */
+    width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* Remove the pseudo-elements (The "STEP" text placeholder) for this specific heading */
+.post-content h2#steps::before,
+.post-content h2#steps::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* 
+   PC Sidebar Safety: 
+   Ensure flex is active for large screens 
+*/
+@media screen and (min-width: 1000px) {
+    .content-area {
+        display: flex !important;
+    }
+
+    .sidebar {
+        display: block !important;
+    }
+}/* ===== V14: PC WIDTH EXPANSION ===== */
+
+/* 1. PC Container Width Increase */
+@media screen and (min-width: 1000px) {
+
+    /* Release the 1200px constraint */
+    .container,
+    .site-main .container {
+        max-width: 1600px !important;
+        /* Increased from 1200px */
+        width: 98% !important;
+        /* Use almost full width */
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        margin: 0 auto !important;
+    }
+
+    .site-content {
+        max-width: 100% !important;
+        width: 100% !important;
+        justify-content: space-between !important;
+        /* Spread article and sidebar */
+        gap: 30px !important;
+    }
+
+    /* 2. Content Area Expansion */
+    .content-area {
+        width: 100% !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 30px !important;
+    }
+
+    /* 3. Main Article Column */
+    /* Make it take all available space minus sidebar */
+    .main-content {
+        flex: 1 1 auto !important;
+        /* Grow aggressively */
+        width: auto !important;
+        /* Ensure it doesn't get artificially restricted */
+        max-width: calc(100% - 330px) !important;
+        min-width: 600px !important;
+        /* Minimum comfortable reading width */
+    }
+
+    /* 4. Sidebar Column */
+    .sidebar {
+        flex: 0 0 300px !important;
+        width: 300px !important;
+        max-width: 300px !important;
+    }
+}/* ===== V15: CENTER ALIGNMENT & PADDING FIX ===== */
+
+/* 1. PC Layout: Center Align Article & Sidebar */
+/* Prevent "Spread apart" look caused by space-between */
+
+@media screen and (min-width: 1000px) {
+    .container {
+        /* Keep wide container */
+        max-width: 1400px !important;
+        /* Slightly reduce from 1600px to keep things closer */
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    .content-area {
+        display: flex !important;
+        justify-content: center !important;
+        /* Push everything to center */
+        gap: 40px !important;
+        /* Fixed gap instead of variable space */
+    }
+
+    .main-content {
+        flex: 1 1 800px !important;
+        /* Base width large */
+        max-width: 900px !important;
+        /* Cap article width to keep line length readable */
+        width: auto !important;
+        margin-right: 0 !important;
+        /* No extra margins */
+    }
+
+    .sidebar {
+        flex: 0 0 300px !important;
+        margin-left: 0 !important;
+    }
+}
+
+/* 2. Article Padding Standardization */
+/* Ensure right padding isn't weirdly large */
+.post,
+article {
+    box-sizing: border-box !important;
+    padding: 20px !important;
+    /* Uniform padding */
+}
+
+/* Ensure no inner element adds extra margin */
+.entry-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}/* ===== V16: ROBUST CENTERING & RESPONSIVE FIX ===== */
+
+/* 1. PC Layout: Safe Centering and Shrinking */
+@media screen and (min-width: 1000px) {
+
+    /* Container: Centers the whole block on the screen */
+    .container {
+        max-width: 1280px !important;
+        /* Standard optimal reading width */
+        width: 100% !important;
+        margin: 0 auto !important;
+        /* Center aligning the container itself */
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    /* Flex Wrapper: Holds Article + Sidebar */
+    .content-area {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        /* Keeps Article+Sidebar in the middle */
+        align-items: flex-start !important;
+        gap: 40px !important;
+        width: 100% !important;
+    }
+
+    /* Article (Left Column) */
+    .main-content {
+        /* Grow: 1, Shrink: 1, Basis: 0% -> Crucial for fluid responsive behavior */
+        flex: 1 1 0% !important;
+
+        display: block !important;
+        min-width: 0 !important;
+        /* MUST be 0 to allow shrinking without overflow */
+        max-width: 880px !important;
+        /* Cap width for readability */
+        width: auto !important;
+    }
+
+    /* Sidebar (Right Column) */
+    .sidebar {
+        flex: 0 0 300px !important;
+        /* Don't grow, don't shrink, fixed 300px */
+        width: 300px !important;
+        max-width: 300px !important;
+        min-width: 300px !important;
+        margin-top: 0 !important;
+    }
+}
+
+/* 2. Safety: Eliminate any potential 'left cut-off' triggers */
+/* If content is forced too wide, justify-content:center cuts off left side. 
+   We prevent forcing by ensuring max-width constrained elements */
+.site-main,
+.site-content {
+    overflow-x: visible !important;
+    /* Or hidden if needed, but visible helps scroll */
+}/* ===== V17: FULL WIDTH EXPANSION (NO LIMITS) ===== */
+
+/* 1. PC: Global Container Expansion */
+@media screen and (min-width: 1000px) {
+
+    /* Make the main container occupy near full width to match header */
+    .container,
+    .site-main .container {
+        max-width: 100% !important;
+        /* Remove 1280px limit */
+        width: 96% !important;
+        /* Leave tiny gaps on edges */
+        margin: 0 auto !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    /* 2. Content Layout: Use ALL available space */
+    .content-area {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        /* Spread to edges */
+        align-items: flex-start !important;
+        gap: 40px !important;
+        width: 100% !important;
+    }
+
+    /* 3. Article Column: UNLEASH THE WIDTH */
+    /* Remove artificial reading width limits to fill the void */
+    .main-content {
+        flex: 1 1 auto !important;
+        /* Grow greedy */
+        width: auto !important;
+        max-width: none !important;
+        /* DELETE 880px LIMIT */
+        min-width: 0 !important;
+        /* Allow shrink on resize */
+    }
+
+    /* 4. Sidebar: Stay Fixed */
+    .sidebar {
+        flex: 0 0 300px !important;
+        width: 300px !important;
+        max-width: 300px !important;
+        margin-right: 0 !important;
+    }
+}
+
+/* ===== CTA BUTTON V6 DESIGN ===== */
+/* Wrapper */
+.cta-button-wrapper {
+    text-align: center;
+    margin: 32px 0 40px 0;
+}
+
+/* Main Button */
+.cta-button-v6 {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    width: 90% !important;
+    max-width: 500px !important;
+    margin: 0 auto !important;
+    background: linear-gradient(to bottom, #4ade80, #22c55e) !important;
+    color: #fff !important;
+    padding: 16px 16px !important;
+    border-radius: 12px !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    font-size: 17px !important;
+    line-height: 1.3 !important;
+    box-shadow: 0 6px 0 #15803d, 0 10px 10px rgba(0,0,0,0.25) !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
+    transform: translateY(-2px) !important;
+    transition: all 0.1s !important;
+    border: 1px solid #22c55e !important;
+    box-sizing: border-box !important;
+}
+
+.cta-button-v6:hover {
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 0 #15803d, 0 6px 8px rgba(0,0,0,0.2) !important;
+    color: #fff !important;
+}
+
+/* Logo Image - FIXED 42px */
+.cta-button-v6 img {
+    width: 42px !important;
+    height: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+    flex-shrink: 0 !important;
+    object-fit: contain !important;
+    border-radius: 0 !important;
+    display: block !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    margin: 0 !important;
+}
+
+/* Text Container */
+.cta-button-v6 .cta-text {
+    text-align: left !important;
+    flex: 1 !important;
+    min-width: 0 !important;
+    display: block !important;
+}
+
+.cta-button-v6 .cta-text .cta-main {
+    display: inline-block !important;
+}
+
+.cta-button-v6 .cta-text .cta-sub {
+    font-size: 0.8em !important;
+    opacity: 0.95 !important;
+    font-weight: normal !important;
+}
+
+/* Arrow Icon */
+.cta-button-v6 .cta-arrow {
+    flex-shrink: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.cta-button-v6 .cta-arrow svg {
+    opacity: 0.9 !important;
+}
+
+/* Mobile Responsive - Ensure logo stays 42px */
+@media screen and (max-width: 768px) {
+    .cta-button-v6 {
+        width: 95% !important;
+        padding: 14px 12px !important;
+        font-size: 15px !important;
+        gap: 10px !important;
+    }
+    
+    .cta-button-v6 img {
+        width: 42px !important;
+        height: 42px !important;
+        min-width: 42px !important;
+        max-width: 42px !important;
+    }
+}
