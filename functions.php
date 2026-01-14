@@ -31,7 +31,7 @@ add_action('after_setup_theme', 'fx_blog_setup');
 // スタイルシートとスクリプトの読み込み
 function fx_blog_scripts()
 {
-    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.33');
+    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.34');
 
     // Chart.jsライブラリの読み込み
     wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js', array(), '4.4.0', true);
@@ -78,8 +78,8 @@ function fx_blog_default_menu()
 {
     echo '<ul class="nav-menu">';
     echo '<li><a href="' . esc_url(home_url('/')) . '">ホーム</a></li>';
-    echo '<li><a href="' . esc_url(home_url('/#comparison')) . '">比較</a></li>';
-    echo '<li><a href="' . esc_url(home_url('/#rankings')) . '">ランキング</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/fx-overseas-comparison-ranking/')) . '">比較</a></li>';
+    echo '<li><a href="' . esc_url(home_url('/fx-overseas-comparison-ranking/')) . '">ランキング</a></li>';
     echo '<li><a href="' . esc_url(home_url('/#faq')) . '">FAQ</a></li>';
     echo '</ul>';
 }
@@ -360,8 +360,8 @@ function fx_blog_favicon()
         echo '<link rel="apple-touch-icon" sizes="180x180" href="' . esc_url($apple_touch_icon) . '">' . "\n";
     }
 
-    // デフォルトのWordPressファビコンを削除
-    remove_action('wp_head', 'wp_site_icon', 99);
+    // デフォルトのWordPressファビコンを削除（標準のサイトアイコン機能を使いたい場合はここをコメントアウト）
+    // remove_action('wp_head', 'wp_site_icon', 99);
 }
 add_action('wp_head', 'fx_blog_favicon', 1);
 
