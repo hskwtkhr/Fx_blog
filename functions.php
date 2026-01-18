@@ -31,7 +31,7 @@ add_action('after_setup_theme', 'fx_blog_setup');
 // スタイルシートとスクリプトの読み込み
 function fx_blog_scripts()
 {
-    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.34');
+    wp_enqueue_style('fx-blog-style', get_stylesheet_uri(), array(), '1.0.35');
 
     // Chart.jsライブラリの読み込み
     wp_enqueue_script('chartjs', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js', array(), '4.4.0', true);
@@ -590,4 +590,23 @@ function fx_blog_inject_critical_css()
 }
 add_action('wp_head', 'fx_blog_inject_critical_css', 100);
 
+// パンくずリストを記事コンテンツの先頭に自動挿入
+function fx_blog_add_breadcrumbs_to_content($content)
+{
+    // 投稿ページのみに適用（固定ページは除外）
+    if (is_single() && function_exists('rank_math_the_breadcrumbs')) {
+        // パンくずリストを取得
+        ob_start();
+        rank_math_the_breadcrumbs();
+        $breadcrumbs = ob_get_clean();
+
+        // スタイル付きでラップ
+        $breadcrumbs_html = '<nav class="fx-breadcrumbs" style="margin-bottom: 20px; padding: 10px 0; font-size: 13px; color: #666;">' . $breadcrumbs . '</nav>';
+
+        // コンテンツの先頭に追加
+        $content = $breadcrumbs_html . $content;
+    }
+    return $content;
+}
+add_filter('the_content', 'fx_blog_add_breadcrumbs_to_content', 5);
 
